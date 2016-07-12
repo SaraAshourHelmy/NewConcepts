@@ -7,9 +7,16 @@
     tools:context="com.sara.Volley.VolleyActivity">
 
     <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/img_volley"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/img_volley"
-        android:layout_centerInParent="true"/>
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"/>
+
+    <ListView
+        android:id="@+id/lstV_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_volley"></ListView>
 
 </RelativeLayout>

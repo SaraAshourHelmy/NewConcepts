@@ -30,7 +30,7 @@ public class MyCustomRequest {
         mImageLoader = new ImageLoader(mRequestQueue,
                 new ImageLoader.ImageCache() {
                     private final LruCache<String, Bitmap>
-                            cache = new LruCache<String, Bitmap>(20);
+                            cache = new LruCache<String, Bitmap>(25);
 
                     @Override
                     public Bitmap getBitmap(String url) {
@@ -41,7 +41,10 @@ public class MyCustomRequest {
                     public void putBitmap(String url, Bitmap bitmap) {
                         cache.put(url, bitmap);
                     }
-                });
+
+
+                }
+        );
     }
 
     public RequestQueue getRequestQueue() {
