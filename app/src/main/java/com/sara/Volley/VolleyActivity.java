@@ -1,8 +1,10 @@
 package com.sara.Volley;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.android.volley.Request;
@@ -10,7 +12,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.NetworkImageView;
+import com.android.volley.toolbox.ImageRequest;
 import com.sara.models.Category;
 import com.sara.models.CategoryAdapter;
 import com.sara.newconcepts.R;
@@ -24,7 +26,9 @@ import java.util.HashMap;
 public class VolleyActivity extends AppCompatActivity implements
         Response.Listener, Response.ErrorListener {
 
-    NetworkImageView img_volley;
+    // NetworkImageView set only url -- if want get bitmap from volley
+    // set it in ImageView
+    ImageView img_volley;
     ListView lstV_category;
     RequestQueue mrequest;
     MyJsonRequest jsonRequest;
@@ -44,7 +48,10 @@ public class VolleyActivity extends AppCompatActivity implements
         SetupStringRequest();
         //SetupJsonRequest();
         // mrequest.cancelAll("json");
+
+        img_volley = (ImageView) findViewById(R.id.img_volley);
         SetupImageVolley();
+        // GetBitmapVolley();
 
 
     }
@@ -60,13 +67,44 @@ public class VolleyActivity extends AppCompatActivity implements
     }
 
     private void SetupImageVolley() {
-        img_volley = (NetworkImageView) findViewById(R.id.img_volley);
+
         ImageLoader imageLoader = MyCustomRequest.getInstance(this).getImageLoader();
 
+        //ImageLoader.getImageListener(img_volley,
+        // R.drawable.img, R.drawable.img)
         // this line to set img before download
-        imageLoader.get(img_url, ImageLoader.getImageListener(img_volley,
-                R.drawable.img, R.drawable.img));
-        img_volley.setImageUrl(img_url, imageLoader);
+        imageLoader.get(img_url, new ImageLoader.ImageListener() {
+            @Override
+            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
+                img_volley.setImageBitmap(response.getBitmap());
+            }
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        // below line in case of NetworkImageView
+        //img_volley.setImageUrl(img_url, imageLoader);
+    }
+
+    private void GetBitmapVolley() {
+
+        ImageRequest request = new ImageRequest(img_url, new Response.Listener<Bitmap>() {
+            @Override
+            public void onResponse(Bitmap response) {
+
+                Log.e("img", "done");
+                img_volley.setImageBitmap(response);
+            }
+        }, 0, 0, null, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Log.e("img_error", error + "");
+            }
+        });
+        mrequest.add(request);
     }
 
     private void SetupJsonRequest() {
