@@ -70,6 +70,8 @@ public class VolleyActivity extends AppCompatActivity implements
 
         ImageLoader imageLoader = MyCustomRequest.getInstance(this).getImageLoader();
 
+        // this below lines in case of NetworkImageView to set image
+        // during loading img or when error
         //ImageLoader.getImageListener(img_volley,
         // R.drawable.img, R.drawable.img)
         // this line to set img before download
@@ -117,7 +119,17 @@ public class VolleyActivity extends AppCompatActivity implements
         Log.e("login_url", login_url);
         mrequest = MyCustomRequest.getInstance(this).getRequestQueue();
         jsonRequest = new MyJsonRequest(Request.Method.POST, login_url, new JSONObject(),
-                this, this);
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
         jsonRequest.setTag("json");
         mrequest.add(jsonRequest);
 
@@ -126,7 +138,12 @@ public class VolleyActivity extends AppCompatActivity implements
     @Override
     public void onErrorResponse(VolleyError error) {
 
-        Log.e("error", error.networkResponse.statusCode + "");
+        try {
+            Log.e("error", error.networkResponse.statusCode + "");
+        } catch (Exception e) {
+            Log.e("response_error", e + "");
+        }
+
     }
 
     @Override

@@ -54,6 +54,9 @@ public class CategoryAdapter extends ArrayAdapter<Category> {
         }
 
         viewHolder.tv_category_name.setText(lst_category.get(position).getName());
+        //imageLoader.get(lst_category.get(position).getImg_url(), ImageLoader.getImageListener(
+          //      viewHolder.img_category, R.drawable.img, R.drawable.img));
+
         viewHolder.img_category.setImageUrl(lst_category.get(position).getImg_url()
                 , imageLoader);
 

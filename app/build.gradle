@@ -17,7 +17,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    repositories
+            {
+                // below 2 line for active android
+                mavenCentral()
+                maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+
+            }
+
 }
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -26,5 +35,8 @@ dependencies {
 
     // for volley
     compile project(':volley')
+
+    // for active android
+    compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
 
 }
