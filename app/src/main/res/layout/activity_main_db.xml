@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sara.Database.MainDBActivity">
+    tools:context="com.sara.ActiveAndroid.MainDBActivity">
 
     <TextView
         android:id="@+id/tv_items"

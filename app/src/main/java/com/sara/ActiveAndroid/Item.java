@@ -1,4 +1,4 @@
-package com.sara.Database;
+package com.sara.ActiveAndroid;
 
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;

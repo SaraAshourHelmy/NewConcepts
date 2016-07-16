@@ -39,4 +39,8 @@ dependencies {
     // for active android
     compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
 
+    // for Gson
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.7'
+
+
 }
