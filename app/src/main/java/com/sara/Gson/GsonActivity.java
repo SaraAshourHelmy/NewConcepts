@@ -79,6 +79,7 @@ public class GsonActivity extends AppCompatActivity {
 
             }
         }, null);
+        
         request.add(stringRequest);
     }
 
