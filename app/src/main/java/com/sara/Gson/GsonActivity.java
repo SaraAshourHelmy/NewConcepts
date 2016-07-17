@@ -79,27 +79,18 @@ public class GsonActivity extends AppCompatActivity {
 
             }
         }, null);
-        
+
         request.add(stringRequest);
     }
 
     private void ParseJsonArr(JSONArray arr) {
+
         // Deserialization
         Type collectionType = new TypeToken<ArrayList<CategoryGson>>() {
         }.getType();
         lst_categories = gson.fromJson(arr.toString()
                 , collectionType);
 
-        for (int i = 0; i < lst_categories.size(); i++) {
-
-            CategoryGson cat = lst_categories.get(i);
-
-            String json = cat.cat_id + "\n" + cat.cat_name_en + "\n"
-                    + ((cat.cat_name_ar.equals("")) ? "empty" : cat.cat_name_ar)
-                    + "\n" + cat.section_id
-                    + "\n" + cat.img;
-            //  Log.e("parse_arr", json);
-        }
     }
 
     private void ConvertToJsonArr() {

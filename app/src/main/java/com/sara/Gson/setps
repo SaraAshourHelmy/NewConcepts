@@ -31,7 +31,7 @@
 
      ---------------------------------------------------
 
-  5- some annotations
+  5- some annotations and Setting
 
   --> @Expose   by default display this field in serialize and deserialize
       @Expose (serialize=false) mean not display in serialize but display in deserialize
@@ -55,5 +55,10 @@
       builder.excludeFieldsWithModifiers(Modifier.TRANSIENT, Modifier.STATIC);
 
       but if user this modifiers don't use @Expose also
+
+  --> by Default gson ignore null field from serialize if you want to not ignore
+      use this method in builder
+
+      builder.serializeNulls();
 
 
