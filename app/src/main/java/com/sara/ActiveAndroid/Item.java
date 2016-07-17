@@ -3,6 +3,9 @@ package com.sara.ActiveAndroid;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.util.SQLiteUtils;
+
+import java.util.List;
 
 /**
  * Created by Bassem on 7/13/2016.
@@ -34,5 +37,12 @@ public class Item extends Model {
         this.categoryDB = categoryDB;
         this.name = name;
         this.color = color;
+    }
+
+    public static List<Item> GetCatItem(CategoryDB cat) {
+        return SQLiteUtils.rawQuery(Item.class,
+                "select * from Item where category.cat_id=?"
+                , new String[]
+                        {String.valueOf(cat.cat_id)});
     }
 }

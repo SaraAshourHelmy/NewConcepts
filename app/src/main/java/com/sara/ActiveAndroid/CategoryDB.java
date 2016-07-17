@@ -3,6 +3,7 @@ package com.sara.ActiveAndroid;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
 
 import java.util.List;
 
@@ -26,6 +27,12 @@ public class CategoryDB extends Model {
     public CategoryDB(int cat_id, String cat_name) {
         this.cat_id = cat_id;
         this.cat_name = cat_name;
+    }
+
+    public static CategoryDB getCategory(int id) {
+
+        return new Select().from(CategoryDB.class).where("cat_id=?", id)
+                .executeSingle();
     }
 
     public List<Item> getItem() {

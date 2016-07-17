@@ -42,9 +42,9 @@ public class MainDBActivity extends AppCompatActivity {
             item.save();
 
             //cat2
-            item = new Item(4, "fried chicken", categoryDB2,"red");
+            item = new Item(4, "fried chicken", categoryDB2, "red");
             item.save();
-            item = new Item(5, "grill", categoryDB2,"red");
+            item = new Item(5, "grill", categoryDB2, "red");
             item.save();
 
             Log.e("db", "done");
@@ -56,8 +56,9 @@ public class MainDBActivity extends AppCompatActivity {
     }
 
     private void GetData() {
-        List<Item> items = categoryDB1.getItem();
-
+        //  List<Item> items = categoryDB1.getItem();
+        // List<Item> items = CategoryDB.getCategory(2).getItem();
+        List<Item> items = Item.GetCatItem(CategoryDB.getCategory(1));
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < items.size(); i++) {
 

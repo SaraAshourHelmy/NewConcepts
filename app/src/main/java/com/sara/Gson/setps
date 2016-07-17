@@ -1,0 +1,59 @@
+
+1- compile group: 'com.google.code.gson', name: 'gson', version: '2.7'
+
+   ------------------------------------------
+
+2- create class that want to serialize and deserialize it by default get
+   fields name without annotation
+
+   -------------------------------------------
+
+3- if want to change field name is serialize and deserialize set annotation
+   @SerializeName("name here")
+
+   --------------------------------------------
+
+4- Using Gson :
+  GsonBuilder builder=new GsonBiulder();
+  Gson gson=builder.create();
+
+ --->"ToJson" :
+          String toJson=gson.toJson(put primitive or object or ArrayList<>)
+
+ --->"FromJson" :
+
+       ConvertedType =gson.fromJson(obj.tostring(),ConvertedType.class);
+
+          if converted to ArrayList<Object> use this line to define any complex type
+          Type type=new TypeToken<any type ex:ArrayList<Category>>(){}.getType;
+          then
+           ArrayList<Category> lst=gson.fromJson(obj.tostring(),type);
+
+     ---------------------------------------------------
+
+  5- some annotations
+
+  --> @Expose   by default display this field in serialize and deserialize
+      @Expose (serialize=false) mean not display in serialize but display in deserialize
+      @Expose (deserialize=false) mean versa of above line
+      @Expose (serialize=false , deserialize=false) in 2 case will not display
+
+      To Confirm @Expose annotation in gson builder use this method so any field
+      without Expose will ignored
+
+      builder.excludeFieldsWithoutExposeAnnotation();
+
+  --> @SerializeName("") explained above in step3
+
+  --> Another way to Exclude field without @Expose annotation
+      Use Static or Transient or Volatile modifier in field then
+      user this method in gson builder
+
+      use any modifier that you want to exclude or many modifiers line this
+      builder.excludeFieldsWithModifiers(Modifier.TRANSIENT);
+      or
+      builder.excludeFieldsWithModifiers(Modifier.TRANSIENT, Modifier.STATIC);
+
+      but if user this modifiers don't use @Expose also
+
+

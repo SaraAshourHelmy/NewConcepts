@@ -1,26 +1,24 @@
 package com.sara.Gson;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.android.volley.ExecutorDelivery;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 import com.sara.Volley.MyCustomRequest;
 import com.sara.Volley.MyStringRequest;
-import com.sara.Volley.VolleyActivity;
 import com.sara.newconcepts.R;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.lang.reflect.Modifier;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -28,12 +26,12 @@ public class GsonActivity extends AppCompatActivity {
 
     String url = "http://shaklakaklak.com/api/categories/all/?lastupdate=" + 0;
     Gson gson;
+    ArrayList<CategoryGson> lst_categories;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gson);
-
         SetupGson();
 
     }
@@ -43,8 +41,12 @@ public class GsonActivity extends AppCompatActivity {
         // test1
         GsonBuilder builder = new GsonBuilder();
         // this below line to check expose annotation
-        builder.excludeFieldsWithoutExposeAnnotation();
-        builder.serializeNulls();
+        // builder.excludeFieldsWithoutExposeAnnotation();
+
+        builder.excludeFieldsWithModifiers(Modifier.TRANSIENT, Modifier.STATIC);
+        builder.serializeNulls(); // this line to serialize null value because default
+        // ignore null value
+
         gson = builder.create();
         CategoryGson category = new CategoryGson(1, "sea food");
         Log.e("json1", gson.toJson(category));
@@ -65,6 +67,8 @@ public class GsonActivity extends AppCompatActivity {
                     JSONArray arr = object.getJSONArray("update");
                     //ParseJson(arr);
                     ParseJsonArr(arr);
+                    ConvertToJsonArr();
+
                 } catch (Exception e) {
                     Log.e("json_parse_error", e + "");
                 }
@@ -76,6 +80,33 @@ public class GsonActivity extends AppCompatActivity {
             }
         }, null);
         request.add(stringRequest);
+    }
+
+    private void ParseJsonArr(JSONArray arr) {
+        // Deserialization
+        Type collectionType = new TypeToken<ArrayList<CategoryGson>>() {
+        }.getType();
+        lst_categories = gson.fromJson(arr.toString()
+                , collectionType);
+
+        for (int i = 0; i < lst_categories.size(); i++) {
+
+            CategoryGson cat = lst_categories.get(i);
+
+            String json = cat.cat_id + "\n" + cat.cat_name_en + "\n"
+                    + ((cat.cat_name_ar.equals("")) ? "empty" : cat.cat_name_ar)
+                    + "\n" + cat.section_id
+                    + "\n" + cat.img;
+            //  Log.e("parse_arr", json);
+        }
+    }
+
+    private void ConvertToJsonArr() {
+
+        // Type collectionType = new TypeToken<ArrayList<CategoryGson>>() {
+        //}.getType();
+        String json_arr = gson.toJson(lst_categories);
+        Log.e("json_arr_convert", json_arr);
     }
 
     private void ParseJson(JSONArray arr) {
@@ -93,25 +124,6 @@ public class GsonActivity extends AppCompatActivity {
             }
         } catch (Exception e) {
             Log.e("parse_error", e + "");
-        }
-    }
-
-    private void ParseJsonArr(JSONArray arr) {
-        // Deserialization
-        Type collectionType = new TypeToken<ArrayList<CategoryGson>>() {
-        }.getType();
-        ArrayList<CategoryGson> lst_categories = gson.fromJson(arr.toString()
-                , collectionType);
-
-        for (int i = 0; i < lst_categories.size(); i++) {
-
-            CategoryGson cat = lst_categories.get(i);
-
-            String json = cat.cat_id + "\n" + cat.cat_name_en + "\n"
-                    + ((cat.cat_name_ar.equals("")) ? "empty" : cat.cat_name_ar)
-                    + "\n" + cat.section_id
-                    + "\n" + cat.img;
-            Log.e("parse_arr", json);
         }
     }
 }
