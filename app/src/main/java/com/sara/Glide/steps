@@ -1,0 +1,17 @@
+
+
+1-   compile 'com.github.bumptech.glide:glide:3.7.0'
+
+2-  Create Normal ImageView this write this line
+    Glide.with(this).load(img_url).placeholder(image while loading)
+    .error(image when error).into(img_view)
+
+3- if load Gif file from project use this :
+
+   GlideDrawableImageViewTarget imageViewTarget = new
+                  GlideDrawableImageViewTarget(img_view);
+
+   then load gif into imageViewTarget like this
+
+   Glide.with(this).load(R.drawable.test_gif).into(imageViewTarget);
+
