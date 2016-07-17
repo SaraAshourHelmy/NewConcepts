@@ -1,0 +1,61 @@
+
+1- download volley project
+https://github.com/johnjohndoe/Volley
+
+2- import module to android studio then choose volley project
+
+3- compile project(':volley')
+
+4- create CustomRequestQueue singleTone class to get one obj from
+   RequestQueue
+
+5- create CustomRequest (String or JsonObject or JsonArray) that extend type
+   of request
+
+   override getHeaders method
+
+6- use Volley :
+
+   RequestQueue request= MyRequestQueue.getInstance().getRequestQueue();
+
+   CustomRequest custom=new CustomRequest(Get or Post, url , listener if success,
+   listener if fail);
+
+   request.add(custom)
+
+7- may set tag to custom.setTag("")   so if want to cancel this custom write this
+   request.cancelAll(Tag)  // cancel specific tag
+   request.cancelAll()  // cancel all requests
+
+8- can set Priority to your request
+
+
+---------------------------------------------------
+
+---> To Download Image from volley
+
+1- user NetWorkImageView
+
+    ImageLoader imageLoader=MyCustomRequest.getInstance.getImageLoader();
+
+    imageLoader.get(img_url,getImageListener(network_img_view,
+    R.drawable.load,R.drawable.error))
+
+    network_img_view.getImageUrl(url,imageLoader)
+
+2- get bitmap and set in normal ImageView or use it in any thing
+
+    imageLoader.get(img_url, new ImageLoader.ImageListener( and override
+    onResponse and onErrorResponse))
+
+    bitmap= response.getBitmap();
+
+    or ---------------------------
+
+    by default
+
+    ImageRequest img_request=new ImageRequest(url,new Response.Listener (
+     override onResponse ( response will be bitmap ) and Error))
+
+    requestQueue.add(img_request)
+

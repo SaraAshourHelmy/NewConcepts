@@ -92,7 +92,8 @@ public class VolleyActivity extends AppCompatActivity implements
 
     private void GetBitmapVolley() {
 
-        ImageRequest request = new ImageRequest(img_url, new Response.Listener<Bitmap>() {
+        ImageRequest request = new ImageRequest(img_url,
+                new Response.Listener<Bitmap>() {
             @Override
             public void onResponse(Bitmap response) {
 
