@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.sara.newconcepts"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sara.newconcepts" >
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name="com.activeandroid.app.Application"
@@ -10,32 +10,32 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"/>
-        <activity android:name="com.sara.Volley.VolleyActivity"/>
-        <activity android:name="com.sara.ActiveAndroid.MainDBActivity">
+        android:theme="@style/AppTheme" >
+        <activity android:name=".MainActivity" />
+        <activity android:name="com.sara.Volley.VolleyActivity" />
+        <activity android:name="com.sara.ActiveAndroid.MainDBActivity" >
         </activity>
 
         <!-- add the following metadata for version and database name -->
         <meta-data
             android:name="AA_DB_NAME"
-            android:value="test.db"/>
+            android:value="test.db" />
         <meta-data
             android:name="AA_DB_VERSION"
-            android:value="3"/>
+            android:value="3" />
         <!-- End Db Section -->
 
-        <activity android:name="com.sara.Gson.GsonActivity">
+        <activity android:name="com.sara.Gson.GsonActivity" >
+        </activity>
+        <activity android:name="com.sara.Glide.GlideActivity" >
 
         </activity>
-        <activity android:name="com.sara.Glide.GlideActivity">
-
+        <activity android:name="com.sara.Sensors.sensorActivity" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 
