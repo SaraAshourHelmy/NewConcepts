@@ -1,6 +1,8 @@
 package com.sara.Sensors;
 
 import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,9 +12,12 @@ import com.sara.newconcepts.R;
 
 import java.util.List;
 
-public class sensorActivity extends AppCompatActivity {
+public class sensorActivity extends AppCompatActivity implements
+        SensorEventListener {
 
     TextView tv_sensor;
+    SensorManager sensorManager;
+    Sensor sensor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,24 +29,51 @@ public class sensorActivity extends AppCompatActivity {
         UseSensor();
     }
 
-    private void Steps()
-    {
-        // 1- create SensorManager obj by getSystemService
-        // 2- create Sensor obj = sensorManager.getDefaultSensor(sensor type)
-        // 3- if sensor not found return null else return raw data of sensor
-    }
-
     private void UseSensor() {
 
-        SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        Sensor sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         if (sensor != null) {
-            tv_sensor.setText("exist ; " + sensor.getName());
+            tv_sensor.setText("exist ; " + sensor.getName()
+                    + " - Vendor : " + sensor.getVendor() +
+                    " version : " + sensor.getVersion());
         } else {
             tv_sensor.setText("not found !!!");
         }
 
 
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // to use SensorEventListener
+        sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    private void Steps() {
+
+        /*
+         1- create SensorManager obj by getSystemService
+         2- create Sensor obj = sensorManager.getDefaultSensor(sensor type)
+         3- if sensor not found return null else return raw data of sensor
+         4- user SensorEventListener to listen any change in sensor or accuracy
+            by using sensorManager.registerListener(listener,sensor,period)
+         5- be sure to unregister sensor onPause cycle to save battery
+
+        --------------------------------------
+         there is 3 types of Sensors
+          1- Motion Sensor : like gravity , gyroscope
+          2- Environment Sensor : like Temperature and Light
+          3- Position Sensor : like orientation
+
+        */
     }
 
     private void GetAllSensors() {
@@ -56,5 +88,15 @@ public class sensorActivity extends AppCompatActivity {
                     + "\n";
         }
         tv_sensor.setText(txt);
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
     }
 }
