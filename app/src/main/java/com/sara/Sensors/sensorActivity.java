@@ -59,11 +59,12 @@ public class sensorActivity extends AppCompatActivity implements
 
     private void Steps() {
 
+        // SensorManager, Sensor , SensorEventListener
         /*
          1- create SensorManager obj by getSystemService
          2- create Sensor obj = sensorManager.getDefaultSensor(sensor type)
          3- if sensor not found return null else return raw data of sensor
-         4- user SensorEventListener to listen any change in sensor or accuracy
+         4- user SensorEventListener to listen any change in sensor or accuracy change
             by using sensorManager.registerListener(listener,sensor,period)
          5- be sure to unregister sensor onPause cycle to save battery
 
