@@ -39,7 +39,7 @@ public class FragmentA extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        com = (Communicator) getActivity();
+//        com = (Communicator) getActivity();
         btn_click = (Button) getActivity().findViewById(R.id.btn_click);
         btn_click.setOnClickListener(this);
     }

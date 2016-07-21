@@ -22,5 +22,9 @@ public class ComunicateActivity extends AppCompatActivity implements
         FragmentB fragmentB = (FragmentB)
                 fragmentManager.findFragmentById(R.id.fragment_b);
         fragmentB.SetData(data);
+        
+        // Create ArrayAdapter direct from resource array
+        // ArrayAdapter.createFromResource(this, R.array.items,
+        //       android.R.layout.simple_expandable_list_item_1);
     }
 }

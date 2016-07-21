@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context="com.sara.Fragment.TestFragmentActivity">
 
+    <Button
+        android:id="@+id/btn_test"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:onClick="TestClick"
+        android:text="Test Click"/>
+
     <fragment
         android:id="@+id/my_fragment"
         android:name="com.sara.Fragment.MyFragment"
@@ -20,4 +31,5 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:orientation="vertical"/>
+
 </RelativeLayout>

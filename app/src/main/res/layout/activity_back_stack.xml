@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/rltv_group"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_addA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:onClick="addA"
+        android:text="addA"/>
+
+    <Button
+        android:id="@+id/btn_removeA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/btn_addA"
+        android:onClick="removeA"
+        android:text="removeA"/>
+
+    <Button
+        android:id="@+id/btn_addB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_addA"
+        android:onClick="addB"
+        android:text="addB"/>
+
+    <Button
+        android:id="@+id/btn_removeB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_addA"
+        android:layout_toRightOf="@+id/btn_addB"
+        android:onClick="removeB"
+        android:text="removeB"/>
+
+    <Button
+        android:id="@+id/btn_replaceB_with_A"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_addB"
+        android:onClick="replaceWithB"
+        android:text="Replace with B"/>
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_addB"
+        android:layout_toRightOf="@+id/btn_replaceB_with_A"
+        android:onClick="back"
+        android:text="back"/>
+
+    <Button
+        android:id="@+id/btn_popB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_addB"
+        android:layout_toRightOf="@+id/btn_back"
+        android:onClick="popB"
+        android:text="popB"/>
+
+    <LinearLayout
+        android:id="@+id/lnr_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_popB"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lnr_group"/>
+
+</RelativeLayout>

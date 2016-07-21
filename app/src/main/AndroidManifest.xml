@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.sara.newconcepts"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest
+    package="com.sara.newconcepts"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -36,6 +37,9 @@
         </activity>
         <activity android:name="com.sara.Fragment.ComunicateActivity">
 
+
+        </activity>
+        <activity android:name="com.sara.Fragment.BackStackActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
