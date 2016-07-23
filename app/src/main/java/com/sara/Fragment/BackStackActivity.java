@@ -12,7 +12,8 @@ import com.sara.newconcepts.R;
 /**
  * Created by Bassem on 7/21/2016.
  */
-public class BackStackActivity extends Activity {
+public class BackStackActivity extends Activity implements
+        FragmentManager.OnBackStackChangedListener {
 
     TextView tv_message;
     FragmentManager manager;
@@ -23,7 +24,7 @@ public class BackStackActivity extends Activity {
         setContentView(R.layout.activity_back_stack);
         tv_message = (TextView) findViewById(R.id.tv_message);
         manager = getFragmentManager();
-
+        manager.addOnBackStackChangedListener(this);
 
     }
 
@@ -86,6 +87,21 @@ public class BackStackActivity extends Activity {
 
     public void popB(View view) {
 
-        manager.popBackStack("addB",0);
+        // FragmentManager.POP_BACK_STACK_INCLUSIVE : this flag delete addB also from back
+        // stack , but flag 0 delete all after addB and back to addB not delete it
+        manager.popBackStack("addB",FragmentManager.POP_BACK_STACK_INCLUSIVE);
+    }
+
+    @Override
+    public void onBackStackChanged() {
+
+        String txt = "";
+        int count = manager.getBackStackEntryCount();
+        for (int i = count - 1; i >= 0; i--) {
+            FragmentManager.BackStackEntry entry = manager.getBackStackEntryAt(i);
+            txt += entry.getName() + "\n";
+        }
+
+        tv_message.setText(txt);
     }
 }
