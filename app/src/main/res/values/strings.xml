@@ -16,4 +16,6 @@
         <item>@drawable/android_6</item>
         <item>@drawable/android_7</item>
     </array>
+    <string name="title_activity_maps">Map</string>
+    <string name="google_key">AIzaSyCUMTWWsj5TJbdPN209CEixTZUnNEr1nsQ</string>
 </resources>
