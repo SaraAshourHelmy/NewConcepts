@@ -3,6 +3,7 @@ package com.sara.Fragment;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -26,6 +27,11 @@ public class BackStackActivity extends Activity implements
         manager = getFragmentManager();
         manager.addOnBackStackChangedListener(this);
 
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
     }
 
     public void addA(View view) {
@@ -89,7 +95,7 @@ public class BackStackActivity extends Activity implements
 
         // FragmentManager.POP_BACK_STACK_INCLUSIVE : this flag delete addB also from back
         // stack , but flag 0 delete all after addB and back to addB not delete it
-        manager.popBackStack("addB",FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        manager.popBackStack("addB", FragmentManager.POP_BACK_STACK_INCLUSIVE);
     }
 
     @Override

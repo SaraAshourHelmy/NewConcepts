@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    package="com.sara.newconcepts"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest package="com.sara.newconcepts"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -33,20 +32,20 @@
         <activity android:name="com.sara.Sensors.sensorActivity">
         </activity>
         <activity android:name="com.sara.Fragment.TestFragmentActivity">
-
         </activity>
         <activity android:name="com.sara.Fragment.ComunicateActivity">
-
-
         </activity>
         <activity android:name="com.sara.Fragment.BackStackActivity">
+        </activity>
+
+        <activity android:name="com.sara.MultiThread.ThreadActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-
         </activity>
+
     </application>
 
 </manifest>

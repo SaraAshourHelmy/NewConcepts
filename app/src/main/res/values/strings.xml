@@ -6,4 +6,14 @@
         <item>Item2</item>
         <item>Item3</item>
     </array>
+
+    <array name="pics">
+        <item>@drawable/android_1</item>
+        <item>@drawable/android_2</item>
+        <item>@drawable/android_3</item>
+        <item>@drawable/android_4</item>
+        <item>@drawable/android_5</item>
+        <item>@drawable/android_6</item>
+        <item>@drawable/android_7</item>
+    </array>
 </resources>
