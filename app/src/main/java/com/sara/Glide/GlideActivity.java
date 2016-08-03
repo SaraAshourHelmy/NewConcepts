@@ -2,7 +2,6 @@ package com.sara.Glide;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -20,10 +19,10 @@ public class GlideActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_glide);
-        //SetupTools();
+        SetupTools();
         // SetupGif();
         // SetupGif();
-        LoadGif();
+        //LoadGif();
     }
 
     private void LoadGif() {
@@ -50,9 +49,9 @@ public class GlideActivity extends AppCompatActivity {
 
     private void SetupTools() {
         img_glide = (ImageView) findViewById(R.id.img_glide);
-        img_glide.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+       // img_glide.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 
-        Glide.with(this).load(img_url).crossFade()
+        Glide.with(this).load(img_url)
                 .placeholder(R.drawable.img).error(R.drawable.img).into(img_glide);
     }
 }

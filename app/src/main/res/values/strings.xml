@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">NewConcepts</string>
+    <string name="start_location">Start Update Location</string>
+    <string name="stop_location">Stop Update Location</string>
 
     <array name="items">
         <item>Item1</item>

@@ -45,7 +45,8 @@ dependencies {
     // for Glide
     compile 'com.github.bumptech.glide:glide:3.7.0'
 
-    // for google map
-    compile 'com.google.android.gms:play-services:6.5.+'
+    // for google map and Location service
+    // and for any Service in google play service
+    compile 'com.google.android.gms:play-services:7.0.0'
 
 }

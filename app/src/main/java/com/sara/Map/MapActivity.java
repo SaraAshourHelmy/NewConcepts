@@ -14,6 +14,7 @@ import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.OnStreetViewPanoramaReadyCallback;
 import com.google.android.gms.maps.StreetViewPanorama;
 import com.google.android.gms.maps.StreetViewPanoramaFragment;
@@ -28,7 +29,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class MapActivity extends AppCompatActivity {
+public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     GoogleMap map;
     StreetViewPanoramaFragment viewPanoramaFragment;
@@ -39,13 +40,17 @@ public class MapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_map);
 
 
-        map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
-                .getMap();
+        ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
+                .getMapAsync(this);
+        // or
+        // map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap()
+
+        //.getMap();
         //SetupMap();
         //SetPolyLines();
 
         SetupStreetView();
-        SetupFlatMode();
+       // SetupFlatMode();
     }
 
     private void SetupStreetView() {
@@ -239,5 +244,11 @@ public class MapActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return addressName;
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        map = googleMap;
+        SetupFlatMode();
     }
 }
