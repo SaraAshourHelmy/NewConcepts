@@ -47,6 +47,7 @@ dependencies {
 
     // for google map and Location service
     // and for any Service in google play service
-    compile 'com.google.android.gms:play-services:7.0.0'
+    // this version no for face detection
+    compile 'com.google.android.gms:play-services:7.8+'
 
 }

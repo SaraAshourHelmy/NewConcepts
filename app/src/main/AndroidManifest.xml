@@ -46,7 +46,6 @@
         <activity android:name="com.sara.Gson.GsonActivity">
         </activity>
         <activity android:name="com.sara.Glide.GlideActivity">
-
         </activity>
         <activity android:name="com.sara.Sensors.sensorActivity">
         </activity>
@@ -59,7 +58,6 @@
         <activity android:name="com.sara.MultiThread.ThreadActivity">
         </activity>
         <activity android:name="com.sara.Map.MapActivity">
-
         </activity>
 
         <meta-data
@@ -74,14 +72,22 @@
             android:name="com.sara.Glide.GlideConfig"
             android:value="GlideModule"/>
 
+        <!-- meta data for face detection -->
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="face"/>
+
         <activity android:name="com.sara.Location.LocationActivity">
+
+        </activity>
+        <activity android:name="com.sara.FaceDetection.FaceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
 
+        </activity>
     </application>
 
 </manifest>

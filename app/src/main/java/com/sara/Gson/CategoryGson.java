@@ -11,7 +11,7 @@ public class CategoryGson {
     @Expose
     static String test1;
 
-    @Expose
+
     @SerializedName("id")
     int cat_id;
     @Expose
