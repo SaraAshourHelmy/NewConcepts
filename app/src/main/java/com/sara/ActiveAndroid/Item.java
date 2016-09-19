@@ -7,9 +7,7 @@ import com.activeandroid.util.SQLiteUtils;
 
 import java.util.List;
 
-/**
- * Created by Bassem on 7/13/2016.
- */
+
 
 @Table(name = "Item")
 public class Item extends Model {
@@ -37,6 +35,7 @@ public class Item extends Model {
         this.categoryDB = categoryDB;
         this.name = name;
         this.color = color;
+
     }
 
     public static List<Item> GetCatItem(CategoryDB cat) {
